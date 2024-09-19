@@ -1,20 +1,14 @@
 <script setup lang="ts">
 import VChart from "vue-echarts";
 
-import { use } from "echarts/core";
-import { VisualMapComponent } from "echarts/components";
-import { CanvasRenderer } from "echarts/renderers";
-import { Bar3DChart } from "echarts-gl/charts";
-import { Grid3DComponent } from "echarts-gl/components";
+import "echarts";
+import "echarts-gl";
 
 import { ref, onMounted } from "vue";
-import type { Ref } from "vue";
-
-use([VisualMapComponent, Grid3DComponent, Bar3DChart, CanvasRenderer]);
 
 const loading = ref(true);
 
-const option: Ref<any> = ref({
+const option = ref({
   grid3D: {
     boxWidth: 50,
     boxDepth: 200,
@@ -51,6 +45,7 @@ const option: Ref<any> = ref({
       ],
     },
   },
+  series: {},
 });
 
 onMounted(async () => {
