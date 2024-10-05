@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import DailyTemperatureChart from "@/components/DailyTemperature/DailyTemperatureChart.vue";
 
-import { ref, onMounted } from "vue";
+import { onMounted, ref } from "vue";
 
 const loading = ref(true);
 const data = ref([]);

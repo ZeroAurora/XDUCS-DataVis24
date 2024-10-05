@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import SpiralCurveChart from "@/components/SpatialPlot/SpiralCurveChart.vue";
 import BivariateNormalChart from "@/components/SpatialPlot/BivariateNormalChart.vue";
 import SphereChart from "@/components/SpatialPlot/SphereChart.vue";
+import SpiralCurveChart from "@/components/SpatialPlot/SpiralCurveChart.vue";
 </script>
 
 <template>

@@ -1,12 +1,12 @@
 <script setup lang="ts">
-const props = defineProps(["loading", "data"]);
+import { ref, watchEffect } from "vue";
 
 import VChart from "vue-echarts";
-
 import "echarts";
+
 import "echarts-gl";
 
-import { ref, watchEffect } from "vue";
+const props = defineProps(["loading", "data"]);
 
 const option = ref({
   grid3D: {
@@ -67,5 +67,5 @@ watchEffect(() => {
 </script>
 
 <template>
-  <VChart :option :loading :autoresize="true"></VChart>
+  <VChart :option :loading :autoresize="true" />
 </template>

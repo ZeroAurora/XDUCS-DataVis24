@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import VChart from "vue-echarts";
-
-import "echarts";
-import "echarts-gl";
-
 import { ref } from "vue";
+
+import VChart from "vue-echarts";
+import "echarts";
+
+import "echarts-gl";
 
 const spiralCurve = [];
 for (let z = 0; z < 5; z += 0.01) {
@@ -63,5 +63,5 @@ const option = ref({
 </script>
 
 <template>
-  <VChart :option :autoresize="true"></VChart>
+  <VChart :option :autoresize="true" />
 </template>

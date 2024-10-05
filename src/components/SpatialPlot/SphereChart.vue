@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import VChart from "vue-echarts";
-
-import "echarts";
-import "echarts-gl";
-
 import { ref } from "vue";
+
+import VChart from "vue-echarts";
+import "echarts";
+
+import "echarts-gl";
 
 const option = ref({
   backgroundColor: "#fff",
@@ -65,6 +65,7 @@ const option = ref({
   ],
 });
 </script>
+
 <template>
-  <VChart :option :autoresize="true"></VChart>
+  <VChart :option :autoresize="true" />
 </template>
