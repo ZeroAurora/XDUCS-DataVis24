@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
-
 import VChart from "vue-echarts";
 import "echarts";
-
 import "echarts-gl";
 
 const option = ref({

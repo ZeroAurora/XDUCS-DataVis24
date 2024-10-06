@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { ref, watchEffect } from "vue";
-
 import VChart from "vue-echarts";
 import "echarts";
-
 import "echarts-gl";
 
 const props = defineProps(["loading", "data"]);
