@@ -13,5 +13,10 @@
         Spatial Plot
       </RouterLink>
     </li>
+    <li>
+      <RouterLink to="/geodata">
+        Geodata
+      </RouterLink>
+    </li>
   </ol>
 </template>

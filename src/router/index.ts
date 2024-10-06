@@ -18,6 +18,11 @@ const router = createRouter({
       name: "spatial-plot",
       component: () => import("../views/SpatialPlotView.vue"),
     },
+    {
+      path: "/geodata",
+      name: "geodata",
+      component: () => import("../views/GeodataView.vue"),
+    },
   ],
 });
 
