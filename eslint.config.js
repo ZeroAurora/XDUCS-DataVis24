@@ -9,6 +9,6 @@ export default antfu({
   },
   ignores: [
     "public/*",
-    "data_preprocess/*",
+    "src_python/*",
   ],
 });
