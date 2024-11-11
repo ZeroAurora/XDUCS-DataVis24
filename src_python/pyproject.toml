@@ -5,8 +5,11 @@ requires-python = ">=3.12"
 dependencies = [
     "fastapi>=0.115.0",
     "pandas>=2.2.3",
-    "sqlalchemy>=2.0.35",
+    "pymongo>=4.9.2",
+    "pymongoarrow>=1.6.0",
 ]
 
 [tool.uv]
-dev-dependencies = []
+dev-dependencies = [
+    "ipykernel>=6.29.5",
+]

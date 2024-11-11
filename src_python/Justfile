@@ -1,0 +1,31 @@
+default:
+    @just --choose
+
+mongo_init:
+    podman create -p 27017:27017 -v .:/host --name xducs-datavis24-mongo docker.io/mongo:8
+
+mongo_start:
+    podman start xducs-datavis24-mongo
+
+mongo_stop:
+    podman stop xducs-datavis24-mongo
+
+mongo_prune:
+    podman rm xducs-datavis24-mongo -v
+
+mongo_enter:
+    podman exec -it xducs-datavis24-mongo bash
+
+mongoexec := "podman exec -it xducs-datavis24-mongo "
+mongosh := mongoexec + "mongosh"
+mongoimport := mongoexec + "mongoimport"
+
+chinavis-2023_import:
+    #!/bin/bash
+    {{mongosh}} chinavis2023 --eval "db.dropDatabase()"
+    for f in 04-chinavis-2023-problem-1/data/part-*.json; do
+        {{mongoimport}} -d chinavis2023 -c road_data /host/$f
+    done
+
+chinavis-2023_migrate prefix="":
+    {{mongoexec}} bash -c "mongosh chinavis2023 /host/04-chinavis-2023-problem-1/migrations/{{prefix}}*.js"
