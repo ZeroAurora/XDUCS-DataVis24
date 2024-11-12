@@ -1,39 +1,11 @@
 # xducs-datavis24
 
-This template should help get you started developing with Vue 3 in Vite.
+Work in progress.
 
-## Recommended IDE Setup
+# License
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+项目中除去第三方资源外的代码，均采用 [PolyForm Strict License 1.0.0](/LICENSE) 授权。你不得对本仓库的代码进行修改和再分发。希望这在保持本仓库代码可供参阅的情况下，能严格限制对本仓库代码的直接抄袭。
 
-## Type Support for `.vue` Imports in TS
+尽管法律上无从实践，也请后来者尊重“学术诚信”四个字。
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-pnpm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-pnpm dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-pnpm build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-pnpm lint
-```
+（这里本来应该有一篇情绪发泄的文章的但是还没来得及写。）
