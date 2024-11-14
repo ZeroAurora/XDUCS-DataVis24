@@ -1,0 +1,26 @@
+{
+  "folders": [
+    {
+      "path": ".",
+    },
+    {
+      "path": "src_python",
+    },
+  ],
+  "settings": {
+    "sqltools.connections": [
+      {
+        "server": "http://localhost",
+        "port": 8123,
+        "database": "default",
+        "username": "default",
+        "requestTimeout": 30000,
+        "enableTls": false,
+        "previewLimit": 50,
+        "driver": "ClickHouse",
+        "name": "localhost",
+        "password": ""
+      }
+    ]
+  },
+}

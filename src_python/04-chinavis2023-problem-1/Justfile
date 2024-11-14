@@ -1,0 +1,30 @@
+default:
+    @just --choose
+
+dbinit:
+    podman create \
+        --name chinavis2023-clickhouse \
+        --publish 8123:8123 \
+        --publish 9000:9000 \
+        -v .:/host \
+        --pull newer \
+        docker.io/clickhouse/clickhouse-server:24-alpine
+
+dbstart:
+    podman start chinavis2023-clickhouse
+
+dbstop:
+    podman stop chinavis2023-clickhouse
+
+dbremove:
+    podman rm chinavis2023-clickhouse -v
+
+dbclient args="":
+    podman exec -it chinavis2023-clickhouse clickhouse-client {{args}}
+
+clickhouse-client := "podman exec -i chinavis2023-clickhouse clickhouse-client"
+
+import:
+    {{clickhouse-client}} -nm < ./init.sql
+    {{clickhouse-client}} -q "INSERT INTO road_data FORMAT Parquet" \
+        < ./analyze/cleaned_data/road_data.parquet

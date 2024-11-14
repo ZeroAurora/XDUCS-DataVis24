@@ -1,3 +1,3 @@
 ## Dependencies
 
-- MongoDB or compatible databases
+- Clickhouse Database
