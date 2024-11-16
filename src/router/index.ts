@@ -23,6 +23,11 @@ const router = createRouter({
       name: "geodata",
       component: () => import("../views/GeodataView.vue"),
     },
+    {
+      path: "/chinavis-traffic",
+      name: "chinavis-traffic",
+      component: () => import("../views/ChinaVisTrafficView.vue"),
+    },
   ],
 });
 

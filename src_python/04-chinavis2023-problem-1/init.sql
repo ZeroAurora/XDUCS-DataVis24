@@ -9,6 +9,6 @@ CREATE TABLE road_data (
     velocity Float64,
     type UInt64,
     heading Float64,
-    time DateTime64(6)
+    time DateTime64(6, 'Asia/Shanghai'),
 ) ENGINE = MergeTree
 ORDER BY (time, id, seq);
