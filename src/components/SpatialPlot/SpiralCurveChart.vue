@@ -7,9 +7,9 @@ import "echarts";
 import "echarts-gl";
 
 const spiralCurve = [];
-for (let z = 0; z < 5; z += 0.01) {
-  const x = Math.sin(z * 10) * 5;
-  const y = Math.cos(z * 10) * 5;
+for (let z = 0; z < 10; z += 0.01) {
+  const x = Math.sin(z * 2) * 5;
+  const y = Math.cos(z * 2) * 5;
   spiralCurve.push([x, y, z]);
 }
 
@@ -20,7 +20,7 @@ const option = ref({
     show: false,
     dimension: 2,
     min: 0,
-    max: 5,
+    max: 10,
     inRange: {
       color: [
         "#4575b4",
