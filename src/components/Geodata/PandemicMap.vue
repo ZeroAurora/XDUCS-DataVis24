@@ -38,14 +38,18 @@ onMounted(async () => {
 
   option.value = {
     visualMap: {
+      type: "piecewise",
+      pieces: [
+        { min: 10000, label: ">10000", color: "#CC400F" },
+        { min: 1000, max: 10000, label: "1000-10000", color: "#FF5013" },
+        { min: 500, max: 1000, label: "500-1000", color: "#FF8A22" },
+        { min: 100, max: 500, label: "100-500", color: "#FEC342" },
+        { min: 50, max: 100, label: "50-100", color: "#FFFE64" },
+        { min: 10, max: 50, label: "10-50", color: "#CFEF66" },
+        { min: 1, max: 10, label: "1-10", color: "#9FDE68" },
+        { min: 0, max: 1, label: "0", color: "#6FD069" },
+      ],
       left: "right",
-      min: 0,
-      max: 100000,
-      inRange: {
-        color: ["lightskyblue", "yellow", "orangered"],
-      },
-      text: ["High", "Low"],
-      calculable: true,
     },
     tooltip: {
       trigger: "item",
@@ -64,7 +68,7 @@ onMounted(async () => {
       playInterval: 500,
       checkpointStyle: {
         animationDuration: 100,
-      }
+      },
     },
     options,
   };
