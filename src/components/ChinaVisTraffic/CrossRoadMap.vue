@@ -21,7 +21,7 @@ watchEffect(async () => {
 
 watchEffect(async () => {
   data = await getObjectsAtSeq(seq.value);
-  const optionValue = await renderMapEcharts(data);
+  const optionValue = renderMapEcharts(data);
   if (optionValue) {
     option.value = optionValue;
   }
