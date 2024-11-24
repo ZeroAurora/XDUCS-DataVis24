@@ -1,24 +1,5 @@
-import { client } from "./clickhouseClient";
+import { getDensityByTenMinutes } from "./clickhouseClient";
 import { PARTICIPANT_NAME_MAP } from "./types";
-
-async function getDensityByTenMinutes() {
-  const result = await client.query({
-    query: `
-      SELECT 
-        toStartOfInterval(time, INTERVAL 10 MINUTE) AS interval_start,
-        type,
-        count(DISTINCT id) AS type_count
-      FROM road_data
-      GROUP BY interval_start, type
-      ORDER BY interval_start, type
-    `,
-    format: "JSON",
-  });
-
-  const resultJson = await result.json();
-
-  return resultJson.data;
-}
 
 export async function renderDensityEcharts() {
   const data = await getDensityByTenMinutes();

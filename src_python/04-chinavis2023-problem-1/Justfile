@@ -25,6 +25,9 @@ dbclient args="":
 clickhouse-client := "podman exec -i chinavis2023-clickhouse clickhouse-client"
 
 import:
-    {{clickhouse-client}} -nm < ./init.sql
+    {{clickhouse-client}} -nm < ./sql/00-init.sql
     {{clickhouse-client}} -q "INSERT INTO road_data FORMAT Parquet" \
         < ./analyze/cleaned_data/road_data.parquet
+    {{clickhouse-client}} -nm < ./sql/10-view-overspeed.sql
+    {{clickhouse-client}} -nm < ./sql/11-view-accel.sql
+    

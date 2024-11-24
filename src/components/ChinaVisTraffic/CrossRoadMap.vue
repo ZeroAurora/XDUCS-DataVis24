@@ -1,31 +1,37 @@
 <script setup lang="ts">
-import * as echarts from "echarts";
-import { inject, onMounted, ref, type Ref, watchEffect } from "vue";
+import type { Ref } from "vue";
+import type { RowData } from "./lib/types";
+import { inject, ref, watchEffect } from "vue";
 import VChart from "vue-echarts";
-import { renderMapEchartsAtSeq } from "./lib/map";
-import { getSeqNearDatetime } from "./lib/utils";
+import { getObjectsAtSeq, getSeqNearDatetime } from "./lib/clickhouseClient";
+import { renderMapEcharts } from "./lib/map";
+import "echarts";
 
 const selectedDatetime = inject<Ref<string>>("selectedDatetime")!;
+const selectedObject = inject<Ref<string>>("selectedObject")!;
+
+let data: RowData[] = [];
 
 const seq = ref("0");
 const option = ref({});
-
-onMounted(async () => {
-  echarts.registerMap("road10", await (await fetch(`/data/4/road10.geojson`)).json());
-});
 
 watchEffect(async () => {
   seq.value = await getSeqNearDatetime(selectedDatetime.value);
 });
 
 watchEffect(async () => {
-  const optionValue = await renderMapEchartsAtSeq(seq.value);
+  data = await getObjectsAtSeq(seq.value);
+  const optionValue = await renderMapEcharts(data);
   if (optionValue) {
     option.value = optionValue;
   }
 });
+
+function onClick(params: any) {
+  selectedObject.value = params.data.id;
+}
 </script>
 
 <template>
-  <VChart :option :autoresize="true" />
+  <VChart :option :autoresize="true" @click="onClick" />
 </template>

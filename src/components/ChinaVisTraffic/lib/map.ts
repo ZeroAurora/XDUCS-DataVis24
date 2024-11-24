@@ -1,27 +1,7 @@
-import { client } from "./clickhouseClient";
+import type { RowData } from "./types";
 import { PARTICIPANT_NAME_MAP } from "./types";
-import { getSeqNearDatetime } from "./utils";
 
-export async function getObjectsAtSeq(seq: string) {
-  const result = await client.query({
-    query: `
-      SELECT * FROM road_data
-      WHERE seq='${seq}'
-    `,
-    format: "JSON",
-  });
-
-  const resultJson = await result.json();
-
-  return resultJson.data;
-}
-
-export async function renderMapEchartsAtSeq(seq: string) {
-  const data = await getObjectsAtSeq(seq);
-  if (!data) {
-    return {};
-  }
-
+export function renderMapEcharts(data: RowData[]) {
   const series = Object.entries(PARTICIPANT_NAME_MAP).map(([key, value]) => ({
     name: value,
     type: "scatter",
@@ -33,8 +13,10 @@ export async function renderMapEchartsAtSeq(seq: string) {
         formatter: "{b}",
       },
     },
-    data: data.filter((item: any) => item.type === key).map((item: any) => ({
+    animation: false,
+    data: data.filter((item: RowData) => item.type === key).map((item: RowData) => ({
       name: `${item.id} - ${value}`,
+      id: item.id,
       value: [item.position.x, item.position.y],
     })),
   }));
