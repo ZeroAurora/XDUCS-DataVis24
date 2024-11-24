@@ -18,5 +18,10 @@
         Geodata
       </RouterLink>
     </li>
+    <li>
+      <RouterLink to="/chinavis-traffic">
+        ChinaVis 2023 Traffic
+      </RouterLink>
+    </li>
   </ol>
 </template>
