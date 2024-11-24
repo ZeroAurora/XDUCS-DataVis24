@@ -1,0 +1,34 @@
+default:
+    @just --choose
+
+dbinit:
+    podman create \
+        --name chinavis2024-clickhouse \
+        --publish 8123:8123 \
+        --publish 9000:9000 \
+        -v .:/host \
+        --pull newer \
+        docker.io/clickhouse/clickhouse-server:24-alpine
+
+dbstart:
+    podman start chinavis2024-clickhouse
+
+dbstop:
+    podman stop chinavis2024-clickhouse
+
+dbremove:
+    podman rm chinavis2024-clickhouse -v
+
+dbclient args="":
+    podman exec -it chinavis2024-clickhouse clickhouse-client {{args}}
+
+clickhouse-client := "podman exec -i chinavis2024-clickhouse clickhouse-client"
+
+import:
+    {{clickhouse-client}} -nm < ./00-init.sql
+    {{clickhouse-client}} -q "INSERT INTO title_info FORMAT Parquet" \
+        < ./analyze/cleaned_data/TitleInfo_with_stats.parquet
+    {{clickhouse-client}} -q "INSERT INTO student_info FORMAT Parquet" \
+        < ./analyze/cleaned_data/StudentInfo.parquet
+    {{clickhouse-client}} -q "INSERT INTO submit_record FORMAT Parquet" \
+        < ./analyze/cleaned_data/SubmitRecord_ranked.parquet

@@ -28,6 +28,11 @@ const router = createRouter({
       name: "chinavis-traffic",
       component: () => import("../views/ChinaVisTrafficView.vue"),
     },
+    {
+      path: "/chinavis-learning",
+      name: "chinavis-learning",
+      component: () => import("../views/ChinaVisLearningView.vue"),
+    },
   ],
 });
 
